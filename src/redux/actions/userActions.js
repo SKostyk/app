@@ -44,39 +44,30 @@ export const loginUser = (userData, history) => (dispatch) => {
     .catch((err) => {
       dispatch({
         type: SET_ERRORS,
-        payload: err.response.data,
       });
     });
 };
-
 export const signupUser = (newUserData, history) => (dispatch) => {
   dispatch({ type: LOADING_UI });
   axios
-    .post("http://127.0.0.1:8000/", newUserData)
+    .post("http://127.0.0.1/", newUserData)
     .then((res) => {
       console.log(res);
       setAuthorizationHeader(res.data.token);
       dispatch(getUserData());
-      dispatch({ type: CLEAR_ERRORS });
+      dispatch({ type
+: CLEAR_ERRORS });
       history.push("/");
     })
     .catch((err) => {
       dispatch({
         type: SET_ERRORS,
-        payload: err.response.data,
+        
       });
     });
 };
 
-export const uploadImage = (formData, userId) => (dispatch) => {
-  dispatch({ type: LOADING_USER });
-  axios
-    .patch(`/userProfiles/${userId}/`, formData)
-    .then(() => {
-      console.log("image updated");
-    })
-    .catch((err) => console.log(err));
-};
+
 
 export const logoutUser = () => (dispatch) => {
   localStorage.removeItem("Token");

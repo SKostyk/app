@@ -17,7 +17,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import KeyboardReturn from '@material-ui/icons/KeyboardReturn';
 // Redux
 import { connect } from "react-redux";
-import { logoutUser, uploadImage } from "../redux/actions/userActions";
+import { logoutUser } from "../redux/actions/userActions";
 
 const styles = (theme) => ({
   ...theme.classes,
@@ -28,7 +28,7 @@ class Profile extends Component {
     const image = event.target.files[0];
     const formData = new FormData();
     formData.append('image', image, image.name);
-    this.props.uploadImage(formData, this.props.user.credentials.id);
+    this.props (formData, this.props.user.credentials.id);
   }
 
   handleEditPicture = () => {
@@ -137,11 +137,10 @@ const mapStateTopProps = (state) => ({
   user: state.user,
 });
 
-const mapActionsToProps = { logoutUser, uploadImage };
+const mapActionsToProps = { logoutUser };
 
 Profile.propTypes = {
   logoutUser: PropTypes.func.isRequired,
-  uploadImage: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
 };
