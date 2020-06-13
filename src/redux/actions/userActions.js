@@ -20,7 +20,7 @@ const setAuthorizationHeader = (token) => {
 export const getUserData = () => (dispatch) => {
   dispatch({ type: LOADING_USER });
   axios
-    .get("/api/auth/user")
+    .get("http://127.0.0.1:8000")
     .then((res) => {
       dispatch({
         type: SET_USER,
@@ -47,6 +47,7 @@ export const loginUser = (userData, history) => (dispatch) => {
       });
     });
 };
+
 export const signupUser = (newUserData, history) => (dispatch) => {
   dispatch({ type: LOADING_UI });
   axios
@@ -55,8 +56,7 @@ export const signupUser = (newUserData, history) => (dispatch) => {
       console.log(res);
       setAuthorizationHeader(res.data.token);
       dispatch(getUserData());
-      dispatch({ type
-: CLEAR_ERRORS });
+      dispatch({ type: CLEAR_ERRORS });
       history.push("/");
     })
     .catch((err) => {

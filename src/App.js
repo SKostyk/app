@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router,  Switch } from "react-router-dom";
 import "./App.css";
 import { ThemeProvider as MuiThemeProvider } from "@material-ui/core/styles";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
@@ -16,7 +16,6 @@ import { logoutUser, getUserData } from "./redux/actions/userActions";
 import Navbar from "./components/Navbar";
 import AuthRoute from "./util/AuthRoute";
 //Pages
-import home from "./pages/home";
 import login from "./pages/login";
 import signup from "./pages/signup";
 
@@ -59,7 +58,6 @@ class App extends Component {
             <div className="container">
               <Navbar />
               <Switch>
-                <Route exact path="/" component={home} />
                 <AuthRoute exact path="/login" component={login} />
                 <AuthRoute exact path="/signup" component={signup} />
               </Switch>
